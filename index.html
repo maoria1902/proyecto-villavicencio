@@ -9,59 +9,99 @@
             --bg-dark: #0A192F;
             --bg-card: #112240;
             --accent-cyan: #00D2FF;
+            --accent-gold: #EAB308;
+            --accent-orange: #F59E0B;
             --text-light: #E6F1FF;
             --text-muted: #8892B0;
             --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --border-color: rgba(0, 210, 255, 0.15);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-dark); color: var(--text-light); font-family: var(--font-main); line-height: 1.6; }
 
         /* Navigation */
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background: rgba(10, 25, 47, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid rgba(0, 210, 255, 0.1); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 5%; background: rgba(10, 25, 47, 0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color); backdrop-filter: blur(8px); }
         .logo { font-size: 1.8rem; font-weight: 800; color: #fff; letter-spacing: 1px; }
         .logo span { color: var(--accent-cyan); }
-        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+        .nav-links { display: flex; list-style: none; gap: 1.8rem; align-items: center; }
         .nav-links a { color: var(--text-light); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--accent-cyan); }
-        .btn-cta { background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+        
+        /* Lang Switcher */
+        .lang-picker { display: flex; background: rgba(255,255,255,0.05); border-radius: 20px; padding: 3px; border: 1px solid var(--border-color); }
+        .lang-btn { background: transparent; color: var(--text-muted); border: none; padding: 4px 10px; border-radius: 16px; font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .lang-btn.active { background: var(--accent-cyan); color: #0A192F; }
+
+        .btn-cta { background: transparent; border: 1px solid var(--accent-cyan); color: var(--accent-cyan); padding: 0.5rem 1.1rem; border-radius: 4px; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
         .btn-cta:hover { background: rgba(0, 210, 255, 0.1); }
 
         /* Hero Section */
-        .hero { padding: 10rem 5% 6rem; text-align: center; max-width: 1100px; margin: 0 auto; }
-        .hero h1 { font-size: 3rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
+        .hero { padding: 9rem 5% 5rem; text-align: center; max-width: 1100px; margin: 0 auto; }
+        .hero h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
         .hero h1 span { color: var(--accent-cyan); }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 2.5rem; }
-        .hero-btns { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { background: var(--accent-cyan); color: var(--bg-dark); padding: 0.8rem 1.8rem; border-radius: 4px; font-weight: 700; text-decoration: none; }
+        .hero p { font-size: 1.15rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 2.5rem; }
+        .hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+        .btn-primary { background: var(--accent-cyan); color: var(--bg-dark); padding: 0.8rem 1.8rem; border-radius: 4px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s; }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-2px); }
 
-        /* Metrics Bar (Style Bain) */
-        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; background: var(--bg-card); padding: 3rem 5%; margin: 3rem 0; border-top: 1px solid rgba(0,210,255,0.2); border-bottom: 1px solid rgba(0,210,255,0.2); text-align: center; }
+        /* Metrics Bar */
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; background: var(--bg-card); padding: 2.5rem 5%; margin: 2rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); text-align: center; }
         .metric-item h2 { font-size: 2.5rem; color: var(--accent-cyan); margin-bottom: 0.3rem; }
         .metric-item p { color: var(--text-muted); font-size: 0.9rem; }
 
-        /* Pillar Services */
-        .services { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; }
+        /* Services */
+        .services { padding: 4rem 5%; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 1rem; }
+        .section-sub { text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1rem; }
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .card { background: var(--bg-card); padding: 2.5rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
+        .card { background: var(--bg-card); padding: 2.2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s; }
         .card:hover { transform: translateY(-5px); border-color: var(--accent-cyan); }
         .card h3 { color: var(--accent-cyan); margin-bottom: 1rem; font-size: 1.3rem; }
 
-        /* Portfolio / Megaproyecto */
+        /* Portfolio Section */
         .portfolio { padding: 5rem 5%; background: rgba(17, 34, 64, 0.5); }
-        .project-featured { max-width: 1100px; margin: 0 auto; background: var(--bg-card); border-radius: 8px; padding: 3rem; border-left: 4px solid var(--accent-cyan); display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
-        .project-badge { background: rgba(0,210,255,0.1); color: var(--accent-cyan); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; display: inline-block; margin-bottom: 1rem; font-weight: 700; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+        @media (max-width: 768px) { .portfolio-grid { grid-template-columns: 1fr; } }
+        
+        .project-card { background: var(--bg-card); border-radius: 10px; padding: 2.2rem; border: 1px solid var(--border-color); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; position: relative; }
+        .project-card:hover { border-color: var(--accent-cyan); transform: translateY(-4px); }
+        .project-card.active-opp { border-left: 4px solid var(--accent-gold); }
+        .project-card.intl-opp { border-left: 4px solid var(--accent-cyan); }
 
-        /* HBU Widget */
-        .calculator { padding: 5rem 5%; max-width: 800px; margin: 0 auto; background: var(--bg-card); border-radius: 8px; border: 1px solid rgba(0,210,255,0.2); }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-light); }
+        .project-badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; display: inline-block; margin-bottom: 1rem; font-weight: 700; width: fit-content; }
+        .badge-gold { background: rgba(234, 179, 8, 0.15); color: var(--accent-gold); border: 1px solid rgba(234, 179, 8, 0.3); }
+        .badge-cyan { background: rgba(0, 210, 255, 0.15); color: var(--accent-cyan); border: 1px solid rgba(0, 210, 255, 0.3); }
+
+        .project-card h3 { font-size: 1.6rem; margin-bottom: 0.8rem; color: #fff; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5; }
+        .project-stats { list-style: none; margin-bottom: 1.8rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1rem; }
+        .project-stats li { margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-light); }
+        .btn-modal-open { width: 100%; text-align: center; background: rgba(0, 210, 255, 0.1); color: var(--accent-cyan); border: 1px solid var(--accent-cyan); padding: 0.8rem; border-radius: 6px; font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-modal-open:hover { background: var(--accent-cyan); color: var(--bg-dark); }
+
+        /* Modal Popups */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 11, 20, 0.85); backdrop-filter: blur(6px); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: var(--bg-card); border: 1px solid var(--accent-cyan); border-radius: 12px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2.5rem; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.8); }
+        .modal-close { position: absolute; top: 1.2rem; right: 1.5rem; background: transparent; border: none; color: var(--text-muted); font-size: 1.8rem; cursor: pointer; }
+        .modal-close:hover { color: #fff; }
+
+        /* Tables inside Modals */
+        .table-responsive { width: 100%; margin: 1.5rem 0; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem; }
+        th, td { padding: 8px 12px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        th { background: rgba(0, 210, 255, 0.1); color: var(--accent-cyan); font-weight: 700; }
+
+        /* Calculator & Leadership */
+        .calculator { padding: 4rem 5%; max-width: 800px; margin: 0 auto; background: var(--bg-card); border-radius: 8px; border: 1px solid var(--border-color); }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.4rem; color: var(--text-light); font-size: 0.9rem; }
         .form-group select, .form-group input { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 4px; }
 
-        /* Leadership */
         .leadership { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; text-align: center; }
-        .leader-box { background: var(--bg-card); padding: 3rem; border-radius: 8px; margin-top: 2rem; }
+        .leader-box { background: var(--bg-card); padding: 2.8rem; border-radius: 8px; margin-top: 2rem; border: 1px solid rgba(255,255,255,0.05); }
 
         /* Footer */
         footer { padding: 3rem 5%; background: var(--bg-dark); border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-muted); font-size: 0.9rem; }
@@ -71,126 +111,377 @@
 
     <nav>
         <div class="logo">maor<span>IA</span> S.A.S.</div>
-        <ul class="nav-links">
-            <li><a href="#servicios">Capacidades</a></li>
-            <li><a href="#portafolio">Portafolio</a></li>
-            <li><a href="#trayectoria">Trayectoria</a></li>
-            <li><a href="#simulador">Calculadora HBU</a></li>
-            <li><a href="https://wa.me/573136007632" class="btn-cta">WhatsApp IA 24/7</a></li>
-        </ul>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="#servicios" data-key="nav_capabilities">Capacidades</a></li>
+                <li><a href="#portafolio" data-key="nav_portfolio">Portafolio</a></li>
+                <li><a href="#trayectoria" data-key="nav_track">Trayectoria</a></li>
+                <li><a href="#simulador" data-key="nav_calc">Calculadora HBU</a></li>
+            </ul>
+            <div class="lang-picker">
+                <button class="lang-btn active" id="btnES" onclick="setLang('ES')">CO ES</button>
+                <button class="lang-btn" id="btnEN" onclick="setLang('EN')">US EN</button>
+            </div>
+            <a href="https://wa.me/573136007632" class="btn-cta" data-key="nav_wp">WhatsApp IA 24/7</a>
+        </div>
     </nav>
 
     <section class="hero">
-        <span class="project-badge">Consultoría Estratégica & Gobierno de Activos</span>
-        <h1>Ciencia de Datos, Estructuración & <span>Mitigación de Riesgos</span></h1>
-        <p>Transformamos predios, infraestructura corporativa y macroprocesos en oportunidades de inversión blindadas técnica, legal y financieramente en Latinoamérica.</p>
+        <span class="project-badge badge-cyan" data-key="hero_badge">Consultoría Estratégica & Gobierno de Activos</span>
+        <h1 data-key="hero_title">Ciencia de Datos, Estructuración & <span>Mitigación de Riesgos</span></h1>
+        <p data-key="hero_desc">Transformamos predios, infraestructura corporativa y macroprocesos en oportunidades de inversión blindadas técnica, legal y financieramente en Latinoamérica.</p>
         <div class="hero-btns">
-            <a href="https://wa.me/573136007632?text=Hola,%20deseo%20consultar%20sobre%20estructuraci%C3%B3n%20de%20proyectos" class="btn-primary">Asistente IA (+57 313 6007632)</a>
-            <a href="https://wa.me/56961126004?text=Hola%20Mauricio,%20requiero%20atenci%C3%B3n%20directa%20para%20un%20proyecto" class="btn-cta">Atención Directa (+569 61126004)</a>
+            <a href="https://wa.me/573136007632?text=Hola,%20deseo%20consultar%20sobre%20estructuraci%C3%B3n%20de%20proyectos" class="btn-primary" data-key="hero_btn1">Asistente IA (+57 313 6007632)</a>
+            <a href="https://wa.me/56961126004?text=Hola%20Mauricio,%20requiero%20atenci%C3%B3n%20directa%20para%20un%20proyecto" class="btn-cta" data-key="hero_btn2">Dirección Ejecutiva (+569 61126004)</a>
         </div>
     </section>
 
     <section class="metrics">
         <div class="metric-item">
             <h2>+30</h2>
-            <p>Años de Experiencia Ejecutiva</p>
+            <p data-key="m1">Años de Experiencia Ejecutiva</p>
         </div>
         <div class="metric-item">
             <h2>+47</h2>
-            <p>Proyectos de Reingeniería y Calidad</p>
+            <p data-key="m2">Proyectos de Reingeniería y Calidad</p>
         </div>
         <div class="metric-item">
             <h2>5</h2>
-            <p>Países con Presencia Operativa</p>
+            <p data-key="m3">Países con Presencia Operativa</p>
         </div>
         <div class="metric-item">
             <h2>+$50M</h2>
-            <p>Mitigación Anual de Riesgos / Sanciones</p>
+            <p data-key="m4">Mitigación Anual de Riesgos / Sanciones</p>
         </div>
     </section>
 
     <section id="servicios" class="services">
-        <h2 class="section-title">Nuestras Áreas de Dominio</h2>
+        <h2 class="section-title" data-key="serv_title">Nuestras Áreas de Dominio</h2>
+        <p class="section-sub" data-key="serv_sub">Modelos analíticos y consultoría de alta gerencia para activos de alto impacto.</p>
         <div class="services-grid">
             <div class="card">
-                <h3>Estructuración Inmobiliaria & HBU</h3>
-                <p>Estudios de Highest & Best Use, análisis de planes de ordenamiento territorial (POT), proyección de m² construibles y viabilidad financiera (CAPEX, TIR, VAN).</p>
+                <h3 data-key="s1_t">Estructuración Inmobiliaria & HBU</h3>
+                <p data-key="s1_d">Estudios de Highest & Best Use, análisis de planes de ordenamiento territorial (POT), proyección de m² construibles y viabilidad financiera (CAPEX, TIR, VAN).</p>
             </div>
             <div class="card">
-                <h3>Gobierno de Activos & Riesgos</h3>
-                <p>Implementación de modelos ISO 31000, COSO y ISO 55001. Auditoría de contratos de infraestructura y cero contingencias jurídicas.</p>
+                <h3 data-key="s2_t">Gobierno de Activos & Riesgos</h3>
+                <p data-key="s2_d">Implementación de modelos ISO 31000, COSO y ISO 55001. Auditoría de contratos de infraestructura y cero contingencias jurídicas.</p>
             </div>
             <div class="card">
-                <h3>Transformación Digital e IA</h3>
-                <p>Integración de Machine Learning e IA Generativa (ISO 42001) para automatización de control de gestión y tableros interactivos en Power BI.</p>
+                <h3 data-key="s3_t">Transformación Digital e IA</h3>
+                <p data-key="s3_d">Integración de Machine Learning e IA Generativa (ISO 42001) para automatización de control de gestión y tableros interactivos en Power BI.</p>
             </div>
         </div>
     </section>
 
+    <!-- Sección de Portafolio con 2 Tarjetas / Ventanas -->
     <section id="portafolio" class="portfolio">
-        <h2 class="section-title">Portafolio Destacado</h2>
-        <div class="project-featured">
-            <div>
-                <span class="project-badge">Megaproyecto Internacional</span>
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Desarrollo Maestro Chi Pay — Riviera Maya</h3>
-                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Oportunidad de inversión de ultra lujo en 220.16 hectáreas. CAPEX proyectado de $1,237M USD con 1,900 llaves hoteleras y certificación de factibilidad ambiental/técnica.</p>
-                <a href="https://wa.me/573136007632?text=Solicito%20informaci%C3%B3n%20sobre%20Proyecto%20Chi%20Pay" class="btn-primary">Solicitar Dossier Bajo NDA</a>
+        <h2 class="section-title" data-key="port_title">Portafolio Estratégico de Activos</h2>
+        <p class="section-sub" data-key="port_sub">Seleccione un proyecto para desplegar la ficha técnica ejecutiva, modelos HBU y datos clave de inversión.</p>
+        
+        <div class="portfolio-grid">
+            <!-- Proyecto 1: Villavicencio -->
+            <div class="project-card active-opp">
+                <div>
+                    <span class="project-badge badge-gold" data-key="p1_badge">Oportunidad Activa · Colombia</span>
+                    <h3>Proyecto Zafiro del Llano</h3>
+                    <p data-key="p1_desc">Master Plan Macrolote de Alto Impacto sobre la Av. del Llano (Villavicencio). Estructuración HBU para uso Mixto, Salud Especializada y Residencial.</p>
+                    <ul class="project-stats">
+                        <li>📍 <strong>Ubicación:</strong> Corredor Av. del Llano, Villavicencio</li>
+                        <li>📐 <strong>Área Macrolote:</strong> 1.213,24 m² (Lote Principal: 804,85 m²)</li>
+                        <li>📈 <strong>TIR Proyectada:</strong> 16,8% – 21,5% | Payback: 2,1 – 3,8 Años</li>
+                        <li>💵 <strong>Valor Adquisición Tierra:</strong> $2.200M COP</li>
+                    </ul>
+                </div>
+                <button class="btn-modal-open" onclick="openModal('modalVillao')" data-key="btn_open_p1">Ver Ficha Técnica Completa (Villavicencio) →</button>
             </div>
-            <div>
-                <ul style="list-style: none; line-height: 2;">
-                    <li>✔ <strong>Valuación de Tierra:</strong> $297M USD</li>
-                    <li>✔ <strong>Ubicación:</strong> Corredor Puerto Morelos - Cancún</li>
-                    <li>✔ <strong>Estatus:</strong> Certeza Jurídica & Fase Promoción</li>
-                    <li>✔ <strong>Estructuración:</strong> maorIA SAS / Gestoría Corporativa</li>
-                </ul>
+
+            <!-- Proyecto 2: México -->
+            <div class="project-card intl-opp">
+                <div>
+                    <span class="project-badge badge-cyan" data-key="p2_badge">Megaproyecto Internacional · México</span>
+                    <h3>Desarrollo Maestro Chi Pay</h3>
+                    <p data-key="p2_desc">Oportunidad de inversión de ultra lujo en el Corredor Puerto Morelos - Cancún, Riviera Maya. Estructuración maestro de usos mixtos y hotelería.</p>
+                    <ul class="project-stats">
+                        <li>📍 <strong>Ubicación:</strong> Riviera Maya, Quintana Roo, México</li>
+                        <li>📐 <strong>Área Total:</strong> 220,16 Hectáreas</li>
+                        <li>🏨 <strong>Capacidad:</strong> 1,900 Llaves Hoteleras Proyectadas</li>
+                        <li>💵 <strong>Valuación Tierra:</strong> $297M USD | CAPEX $1,237M USD</li>
+                    </ul>
+                </div>
+                <button class="btn-modal-open" onclick="openModal('modalMexico')" data-key="btn_open_p2">Ver Ficha Técnica Completa (México) →</button>
             </div>
         </div>
     </section>
 
+    <!-- MODAL VILLAVICENCIO -->
+    <div id="modalVillao" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalVillao')">&times;</button>
+            <span class="project-badge badge-gold">Ficha Técnica Ejecutiva</span>
+            <h2 style="color:var(--accent-gold); margin-bottom:0.5rem;">Proyecto Zafiro del Llano (Villavicencio, Colombia)</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">Macrolote con doble frente de manzana en el principal corredor comercial y médico de Villavicencio.</p>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Escenario HBU</th>
+                            <th>Uso Propuesto</th>
+                            <th>Área Const.</th>
+                            <th>CAPEX Total (COP)</th>
+                            <th>Perfil de Inversión</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Opción 1</strong></td>
+                            <td>Usos Mixtos (7 Pisos)</td>
+                            <td>3.541 m²</td>
+                            <td>$14.143'298.676</td>
+                            <td>Renta balanceada comercio / oficinas médicas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opción 2</strong></td>
+                            <td>Residencial (8 Pisos)</td>
+                            <td>4.024 m²</td>
+                            <td>$15.652'110.223</td>
+                            <td>Máxima edificabilidad y retorno de capital</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opción 3</strong></td>
+                            <td>Strip Center (2 Pisos)</td>
+                            <td>1.207 m²</td>
+                            <td>$4.256'407.750</td>
+                            <td>Bajo riesgo y rápida velocidad de absorción</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="color:#fff; margin-top:1rem; margin-bottom:0.5rem;">Cifras Clave & Certeza Técnica:</h4>
+            <ul style="color:var(--text-muted); font-size:0.9rem; margin-left:1.2rem; margin-bottom:1.5rem; line-height:1.8;">
+                <li><strong>Topografía & Servicios:</strong> Terreno 100% plano, disponibilidad inmediata de redes de acueducto, energía y telecomunicaciones.</li>
+                <li><strong>Modelos de Negociación:</strong> Venta Directa ($2.200M COP), Aportación a Fideicomiso / JV, o Arrendamiento Built-to-Suit (BTS).</li>
+                <li><strong>Estructuración:</strong> Desarrollado bajo la metodología HBU por maorIA S.A.S.</li>
+            </ul>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="https://wa.me/573136007632?text=Solicito%20dossier%20ejecutivo%20del%20Proyecto%20Zafiro%20del%20Llano%20Villavicencio" class="btn-primary" target="_blank">Solicitar dossier por WhatsApp 🟢</a>
+                <a href="mailto:gerencia.maoria@gmail.com?subject=Solicitud%20Data%20Room%20Zafiro%20del%20Llano" class="btn-cta">Solicitar Acceso Data Room ✉️</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL MEXICO -->
+    <div id="modalMexico" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modalMexico')">&times;</button>
+            <span class="project-badge badge-cyan">Megaproyecto Internacional</span>
+            <h2 style="color:var(--accent-cyan); margin-bottom:0.5rem;">Desarrollo Maestro Chi Pay (Riviera Maya, México)</h2>
+            <p style="color:var(--text-muted); margin-bottom:1.5rem;">Desarrollo maestro de uso mixto y hotelería de ultra lujo en una de las zonas de mayor plusvalía turística de América Latina.</p>
+            
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:1rem; margin-bottom:1.5rem;">
+                <div style="background:rgba(255,255,255,0.03); padding:1rem; border-radius:6px; border:1px solid rgba(0,210,255,0.2);">
+                    <div style="font-size:0.75rem; color:var(--text-muted);">VALUACIÓN TIERRA</div>
+                    <div style="font-size:1.3rem; color:var(--accent-cyan); font-weight:800;">$297M USD</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.03); padding:1rem; border-radius:6px; border:1px solid rgba(0,210,255,0.2);">
+                    <div style="font-size:0.75rem; color:var(--text-muted);">CAPEX ESTIMADO</div>
+                    <div style="font-size:1.3rem; color:var(--accent-cyan); font-weight:800;">$1,237M USD</div>
+                </div>
+                <div style="background:rgba(255,255,255,0.03); padding:1rem; border-radius:6px; border:1px solid rgba(0,210,255,0.2);">
+                    <div style="font-size:0.75rem; color:var(--text-muted);">SUPERFICIE</div>
+                    <div style="font-size:1.3rem; color:var(--accent-cyan); font-weight:800;">220,16 Hectáreas</div>
+                </div>
+            </div>
+
+            <h4 style="color:#fff; margin-bottom:0.5rem;">Aspectos Destacados de la Estructuración:</h4>
+            <ul style="color:var(--text-muted); font-size:0.9rem; margin-left:1.2rem; margin-bottom:1.5rem; line-height:1.8;">
+                <li><strong>Certeza Jurídica & Permisos:</strong> Certificación de factibilidad ambiental y técnica aprobada para uso turístico/residencial.</li>
+                <li><strong>Ubicación Estratégica:</strong> Corredor Puerto Morelos - Cancún, con acceso a infraestructura vial de primer orden.</li>
+                <li><strong>Programa Arquitectónico:</strong> 1,900 llaves hoteleras distribuidas en formatos resort, residencial de lujo y zona comercial.</li>
+            </ul>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <a href="https://wa.me/573136007632?text=Solicito%20dossier%20bajo%20NDA%20del%20Proyecto%20Chi%20Pay%20Mexico" class="btn-primary" target="_blank">Solicitar Dossier Bajo NDA 🔒</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HBU Calculator -->
     <section id="simulador" class="calculator">
-        <h2 style="text-align: center; margin-bottom: 1.5rem;">Calculadora de Alcance HBU</h2>
+        <h2 style="text-align: center; margin-bottom: 1.5rem;" data-key="calc_title">Calculadora de Alcance HBU</h2>
         <form onsubmit="alert('Solicitud procesada. El Asistente IA maorIA le contactará en breve.'); return false;">
             <div class="form-group">
-                <label>Tipo de Activo / Proyecto:</label>
+                <label data-key="c_l1">Tipo de Activo / Proyecto:</label>
                 <select required>
-                    <option>Lote Urbano / Suburbano</option>
-                    <option>Macro-Desarrollo Inmobiliario</option>
-                    <option>Auditoría de Contrato de Infraestructura</option>
-                    <option>Optimización de Procesos con IA</option>
+                    <option data-key="c_o1">Lote Urbano / Suburbano</option>
+                    <option data-key="c_o2">Macro-Desarrollo Inmobiliario</option>
+                    <option data-key="c_o3">Auditoría de Contrato de Infraestructura</option>
+                    <option data-key="c_o4">Optimización de Procesos con IA</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Ubicación del Proyecto:</label>
+                <label data-key="c_l2">Ubicación del Proyecto:</label>
                 <select required>
                     <option>Colombia</option>
                     <option>Chile</option>
                     <option>México</option>
                     <option>Perú</option>
-                    <option>Otro (Latinoamérica)</option>
+                    <option data-key="c_o5">Otro (Latinoamérica)</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Correo Electrónico de Contacto:</label>
+                <label data-key="c_l3">Correo Electrónico de Contacto:</label>
                 <input type="email" placeholder="ejemplo@empresa.com" required>
             </div>
-            <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;">Generar Estimación de Proyecto</button>
+            <button type="submit" class="btn-primary" style="width: 100%; border: none; cursor: pointer;" data-key="calc_btn">Generar Estimación de Proyecto</button>
         </form>
     </section>
 
+    <!-- Leadership -->
     <section id="trayectoria" class="leadership">
-        <h2 class="section-title">Dirección Ejecutiva</h2>
+        <h2 class="section-title" data-key="lead_title">Dirección Ejecutiva</h2>
         <div class="leader-box">
             <h3>M. Mauricio Roa Gutiérrez</h3>
-            <p style="color: var(--accent-cyan); margin-bottom: 1rem;">Director de Estructuración | Especialista en IA Generativa & Gobierno de Activos</p>
-            <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;">Líder de consultoría con trayectoria en Chile, Colombia, Perú, Guatemala y Costa Rica. Experiencia en auditoría de contratos para petroleras (BP/Equion), infraestructura energética (Enel X), gestión de activos (+300 sedes en Guard Service) y reingeniería del sector público[cite: 23]. Auditor Internacional ISO 19011[cite: 23].</p>
+            <p style="color: var(--accent-cyan); margin-bottom: 1rem;" data-key="lead_role">Director de Estructuración | Especialista en IA Generativa & Gobierno de Activos</p>
+            <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto;" data-key="lead_bio">Líder de consultoría con trayectoria en Chile, Colombia, Perú, Guatemala y Costa Rica. Experiencia en auditoría de contratos para petroleras (BP/Equion), infraestructura energética (Enel X), gestión de activos (+300 sedes en Guard Service) y reingeniería del sector público. Auditor Internacional ISO 19011.</p>
         </div>
     </section>
 
     <footer>
         <p><strong>maorIA S.A.S.</strong> — Inteligencia de Negocios & Gobierno de Activos</p>
-        <p>Contacto Corporativo: +57 313 6007632 (Atención IA) | +569 61126004 (Dirección Ejecutiva) | gerencia.maoria@gmail.com</p>
+        <p>Contacto Corporativo: +57 313 6007632 (Atención IA) | +569 61126004 (Línea Directa) | gerencia.maoria@gmail.com</p>
         <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">© 2026 maorIA S.A.S. Todos los derechos reservados.</p>
     </footer>
+
+<script>
+    // Idiomas / Translations
+    const translations = {
+        ES: {
+            nav_capabilities: "Capacidades",
+            nav_portfolio: "Portafolio",
+            nav_track: "Trayectoria",
+            nav_calc: "Calculadora HBU",
+            nav_wp: "WhatsApp IA 24/7",
+            hero_badge: "Consultoría Estratégica & Gobierno de Activos",
+            hero_title: "Ciencia de Datos, Estructuración & <span>Mitigación de Riesgos</span>",
+            hero_desc: "Transformamos predios, infraestructura corporativa y macroprocesos en oportunidades de inversión blindadas técnica, legal y financieramente en Latinoamérica.",
+            hero_btn1: "Asistente IA (+57 313 6007632)",
+            hero_btn2: "Dirección Ejecutiva (+569 61126004)",
+            m1: "Años de Experiencia Ejecutiva",
+            m2: "Proyectos de Reingeniería y Calidad",
+            m3: "Países con Presencia Operativa",
+            m4: "Mitigación Anual de Riesgos / Sanciones",
+            serv_title: "Nuestras Áreas de Dominio",
+            serv_sub: "Modelos analíticos y consultoría de alta gerencia para activos de alto impacto.",
+            s1_t: "Estructuración Inmobiliaria & HBU",
+            s1_d: "Estudios de Highest & Best Use, análisis de planes de ordenamiento territorial (POT), proyección de m² construibles y viabilidad financiera (CAPEX, TIR, VAN).",
+            s2_t: "Gobierno de Activos & Riesgos",
+            s2_d: "Implementación de modelos ISO 31000, COSO y ISO 55001. Auditoría de contratos de infraestructura y cero contingencias jurídicas.",
+            s3_t: "Transformación Digital e IA",
+            s3_d: "Integración de Machine Learning e IA Generativa (ISO 42001) para automatización de control de gestión y tableros interactivos en Power BI.",
+            port_title: "Portafolio Estratégico de Activos",
+            port_sub: "Seleccione un proyecto para desplegar la ficha técnica ejecutiva, modelos HBU y datos clave de inversión.",
+            p1_badge: "Oportunidad Activa · Colombia",
+            p1_desc: "Master Plan Macrolote de Alto Impacto sobre la Av. del Llano (Villavicencio). Estructuración HBU para uso Mixto, Salud Especializada y Residencial.",
+            btn_open_p1: "Ver Ficha Técnica Completa (Villavicencio) →",
+            p2_badge: "Megaproyecto Internacional · México",
+            p2_desc: "Oportunidad de inversión de ultra lujo en el Corredor Puerto Morelos - Cancún, Riviera Maya. Estructuración maestro de usos mixtos y hotelería.",
+            btn_open_p2: "Ver Ficha Técnica Completa (México) →",
+            calc_title: "Calculadora de Alcance HBU",
+            c_l1: "Tipo de Activo / Proyecto:",
+            c_o1: "Lote Urbano / Suburbano",
+            c_o2: "Macro-Desarrollo Inmobiliario",
+            c_o3: "Auditoría de Contrato de Infraestructura",
+            c_o4: "Optimización de Procesos con IA",
+            c_l2: "Ubicación del Proyecto:",
+            c_o5: "Otro (Latinoamérica)",
+            c_l3: "Correo Electrónico de Contacto:",
+            calc_btn: "Generar Estimación de Proyecto",
+            lead_title: "Dirección Ejecutiva",
+            lead_role: "Director de Estructuración | Especialista en IA Generativa & Gobierno de Activos",
+            lead_bio: "Líder de consultoría con trayectoria en Chile, Colombia, Perú, Guatemala y Costa Rica. Experiencia en auditoría de contratos para petroleras (BP/Equion), infraestructura energética (Enel X), gestión de activos (+300 sedes en Guard Service) y reingeniería del sector público. Auditor Internacional ISO 19011."
+        },
+        EN: {
+            nav_capabilities: "Capabilities",
+            nav_portfolio: "Portfolio",
+            nav_track: "Track Record",
+            nav_calc: "HBU Calculator",
+            nav_wp: "AI WhatsApp 24/7",
+            hero_badge: "Strategic Consulting & Asset Governance",
+            hero_title: "Data Science, Structuring & <span>Risk Mitigation</span>",
+            hero_desc: "We turn land assets, corporate infrastructure, and macro-processes into technically, legally, and financially shielded investment opportunities across Latin America.",
+            hero_btn1: "AI Assistant (+57 313 6007632)",
+            hero_btn2: "Executive Management (+569 61126004)",
+            m1: "Years of Executive Experience",
+            m2: "Reengineering & Quality Projects",
+            m3: "Countries with Operational Footprint",
+            m4: "Annual Risk & Penalty Mitigation",
+            serv_title: "Our Core Domains",
+            serv_sub: "Analytical models and executive advisory for high-impact real estate & corporate assets.",
+            s1_t: "Real Estate Structuring & HBU",
+            s1_d: "Highest & Best Use studies, zoning ordinance analysis (POT), buildable area projections, and financial modeling (CAPEX, IRR, NPV).",
+            s2_t: "Asset Governance & Risk Control",
+            s2_d: "Implementation of ISO 31000, COSO, and ISO 55001 frameworks. Infrastructure contract auditing and legal contingency mitigation.",
+            s3_t: "Digital Transformation & AI",
+            s3_d: "Integration of Machine Learning and Generative AI (ISO 42001) for management control automation and interactive Power BI dashboards.",
+            port_title: "Strategic Asset Portfolio",
+            port_sub: "Select a project to expand its executive datasheet, HBU models, and financial key metrics.",
+            p1_badge: "Active Opportunity · Colombia",
+            p1_desc: "High-impact Macrolot Master Plan along Av. del Llano (Villavicencio). HBU structuring for Mixed-Use, Healthcare Hub, and Residential.",
+            btn_open_p1: "View Full Datasheet (Villavicencio) →",
+            p2_badge: "International Megaproject · Mexico",
+            p2_desc: "Ultra-luxury investment opportunity in the Puerto Morelos - Cancun Corridor, Riviera Maya. Master structuring for hospitality and mixed-use.",
+            btn_open_p2: "View Full Datasheet (Mexico) →",
+            calc_title: "HBU Scope Estimator",
+            c_l1: "Asset / Project Type:",
+            c_o1: "Urban / Suburban Land Lot",
+            c_o2: "Real Estate Master Development",
+            c_o3: "Infrastructure Contract Audit",
+            c_o4: "AI Process Optimization",
+            c_l2: "Project Location:",
+            c_o5: "Other (Latin America)",
+            c_l3: "Contact Email:",
+            calc_btn: "Generate Project Estimate",
+            lead_title: "Executive Leadership",
+            lead_role: "Director of Structuring | Generative AI & Asset Governance Specialist",
+            lead_bio: "Senior consulting lead with track record across Chile, Colombia, Peru, Guatemala, and Costa Rica. Skilled in contract auditing for energy/oil sector (BP/Equion, Enel X), asset management (+300 Guard Service facilities), and public sector reengineering. Lead ISO 19011 Auditor."
+        }
+    };
+
+    function setLang(lang) {
+        document.getElementById('btnES').classList.toggle('active', lang === 'ES');
+        document.getElementById('btnEN').classList.toggle('active', lang === 'EN');
+
+        document.querySelectorAll('[data-key]').forEach(el => {
+            const key = el.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+    }
+
+    // Modal Control
+    function openModal(modalId) {
+        document.getElementById(modalId).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside content
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+            event.target.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    };
+</script>
 
 </body>
 </html>
